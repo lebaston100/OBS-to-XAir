@@ -3,7 +3,7 @@ This is a small script that mutes and unmutes channels on Behringer XAir Mixers 
 
 ## Requirements
 
-- The [obs-websocket plugin](https://github.com/Palakis/obs-websocket/releases) (Version >= 4.5.1)
+- The [obs-websocket plugin](https://github.com/Palakis/obs-websocket/releases) (Version 4.5.1 - 4.9.1)
 - A fairly recent version of Python 3
 - [websocket-client](https://github.com/websocket-client/websocket-client)
 - [python-osc](https://github.com/attwad/python-osc)
