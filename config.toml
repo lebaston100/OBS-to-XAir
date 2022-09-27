@@ -1,0 +1,8 @@
+[connection]
+# OBS connection info
+host = "localhost"
+port = 4455
+password = "strongpassword"
+
+# xair mixer ip
+ip = "mixer.local"
