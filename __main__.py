@@ -1,14 +1,25 @@
+import logging
 import time
+from pathlib import Path
 
 import obsws_python as obs
 import xair_api
 
-mapping = {
-    "START": 1,
-    "BRB": 2,
-    "END": 3,
-    "LIVE": 4,
-}  # set the mapping for the scene to channel mapping here. "scenename": "channel"
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
+
+logging.basicConfig(level=logging.disable())
+
+
+def _get_mapping():
+    filepath = Path.cwd() / "mapping.toml"
+    with open(filepath, "rb") as f:
+        return tomllib.load(f)
+
+
+mapping = _get_mapping()
 
 
 class Observer:
@@ -28,10 +39,20 @@ class Observer:
         print(" ".join(info))
 
     def on_current_program_scene_changed(self, data):
+        def ftoggle(i):
+            self._mixer.strip[i - 1].mix.on = not self._mixer.strip[i - 1].mix.on
+
+        def fset(i, is_muted):
+            self._mixer.strip[i - 1].mix.on = is_muted
+
         scene = data.scene_name
         print(f"Switched to scene {scene}")
-        for k, v in mapping.items():
-            self._mixer.strip[v - 1].mix.on = k == scene
+        if map_ := mapping.get(scene):
+            for key in map_.keys():
+                if key == "toggle":
+                    [ftoggle(i) for i in map_[key]]
+                else:
+                    [fset(i, key == "mute") for i in map_[key]]
 
     def on_exit_started(self, _):
         print("OBS closing")
@@ -40,6 +61,10 @@ class Observer:
 
 
 def main():
+    filepath = Path.cwd() / "config.toml"
+    with open(filepath, "rb") as f:
+        kind_mixer = tomllib.load(f)["connection"].get("mixer")
+
     with xair_api.connect(kind_mixer) as mixer:
         o = Observer(mixer)
 
@@ -48,6 +73,4 @@ def main():
 
 
 if __name__ == "__main__":
-    kind_mixer = "XR18"
-
     main()

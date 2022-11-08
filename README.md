@@ -1,6 +1,6 @@
 # OBS-to-XAir
 
-This is a small script that mutes and unmutes channels on Behringer XAir Mixers depending on the current scene.
+This is a small script that mutes, unmutes and toggles groups of channels on Behringer XAir Mixers depending on the current scene.
 
 ## Requirements
 
@@ -27,11 +27,11 @@ pip install .
 
 -   Configure websocket settings within `OBS->Tools->obs-websocket Settings`
 
--   Open the included `config.toml` and set OBS host, port and password as well as the xair mixers ip.
+-   Open the included `config.toml` and set OBS host, port and password as well as the xair mixers kind and ip.
 
-    -   You may also set the kind of mixer in the script. (`XR12, XR16, XR18, MR18`)
+    -   Mixer kind may be any one of (`XR12, XR16, XR18, MR18, X32`)
 
--   Set the scene to channel mutes mapping in the script.
+-   Set the scene to channel mutes mapping in `mapping.toml`.
 
 ## Usage
 
@@ -49,7 +49,7 @@ This script was developed and tested with:
 
 -   OBS 28.01
 -   obs-websocket 5.0.1
--   A Behringer XR18 and Midas MR18
+-   A Midas MR18 and an X32 emulator.
 
 ## Special Thanks
 
