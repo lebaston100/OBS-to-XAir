@@ -40,10 +40,10 @@ class Observer:
 
     def on_current_program_scene_changed(self, data):
         def ftoggle(i):
-            self._mixer.strip[i - 1].mix.on = not self._mixer.strip[i - 1].mix.on
+            self._mixer.strip[i - 1].mute = not self._mixer.strip[i - 1].mute
 
         def fset(i, is_muted):
-            self._mixer.strip[i - 1].mix.on = is_muted
+            self._mixer.strip[i - 1].mute = is_muted
 
         scene = data.scene_name
         print(f"Switched to scene {scene}")
