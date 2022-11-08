@@ -27,9 +27,9 @@ pip install .
 
 -   Configure websocket settings within `OBS->Tools->obs-websocket Settings`
 
--   Open the included `config.toml` and set OBS host, port and password as well as the xair mixers ip.
+-   Open the included `config.toml` and set OBS host, port and password as well as the xair mixers kind and ip.
 
-    -   You may also set the kind of mixer in the script. (`XR12, XR16, XR18, MR18, X32`)
+    -   Mixer kind may be any one of (`XR12, XR16, XR18, MR18, X32`)
 
 -   Set the scene to channel mutes mapping in `mapping.toml`.
 

@@ -61,7 +61,9 @@ class Observer:
 
 
 def main():
-    kind_mixer = "XR18"
+    filepath = Path.cwd() / "config.toml"
+    with open(filepath, "rb") as f:
+        kind_mixer = tomllib.load(f)["connection"].get("mixer")
 
     with xair_api.connect(kind_mixer) as mixer:
         o = Observer(mixer)

@@ -4,5 +4,6 @@ host = "localhost"
 port = 4455
 password = "strongpassword"
 
-# xair mixer ip
+# mixer kind and ip
+mixer = "XR18"
 ip = "mixer.local"
