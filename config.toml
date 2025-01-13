@@ -1,9 +1,22 @@
-[connection]
+[obs]
 # OBS connection info
 host = "localhost"
 port = 4455
-password = "strongpassword"
+password = "secretpassword"
 
+[xair]
 # mixer kind and ip
-mixer = "XR18"
+kind_id = "XR18"
 ip = "mixer.local"
+
+[scene_mapping]
+# OBS scene name to mixer channel mapping
+START.mute = [1, 3, 5]
+START.unmute = [2, 7]
+
+BRB.mute = [2, 7]
+BRB.unmute = [1, 3, 5]
+
+END.toggle = [12, 14]
+
+LIVE.toggle = [16]
