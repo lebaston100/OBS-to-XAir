@@ -8,7 +8,7 @@ Functions:
     main(): Main function to parse arguments, configure logging, load configuration, and start the XAir mixer observer.
 Usage:
     Run this script with optional arguments for configuration file path and logging level.
-    Example: python obsxair.py --config path/to/config.toml --debug
+    Example: python . --config path/to/config.toml --debug
 """
 
 import argparse
