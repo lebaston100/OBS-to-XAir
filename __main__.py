@@ -177,7 +177,7 @@ def main():
     3. Loads the configuration file.
     4. Connects to the XAir mixer using the configuration.
     5. Starts an observer to monitor the mixer and waits for events.
-    The function blocks until an event is received.
+    The function blocks until a stop event is received.
     Args:
         None
     Returns:
@@ -191,10 +191,10 @@ def main():
 
     with xair_api.connect(**config["xair"]) as mixer:
         print(f"Connected to {mixer.kind} mixer at {mixer.xair_ip}:{mixer.xair_port}")
-        event = threading.Event()
+        stop_event = threading.Event()
 
-        with Observer(mixer, event, config):
-            event.wait()
+        with Observer(mixer, stop_event, config):
+            stop_event.wait()
 
 
 if __name__ == "__main__":
