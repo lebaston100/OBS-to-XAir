@@ -41,6 +41,15 @@ Simply run the script, there will be confirmation of mixer connection and OBS co
 
 Closing OBS will stop the script.
 
+#### CLI options
+
+-   `--config`: may be a full path to a config file or just a config name.
+    -   If only a config name is passed the script will look in the following locations, returning the first config found:
+        -   Current working directory (may be different from script location depending on how you launch the script)
+        -   In the directory the script is located.
+        -   `user home directory / .config / xair-obs`
+-   `--debug`, `--verbose`: separate logging levels. Debug will produce a lot of logging output.
+
 ## Further notes
 
 Since this script relies upon two interfaces, `obsws-python` and `xair-api` this code can be readily modified to interact with any OBS events and set any xair parameters. Check the README files for each interface for further details.
