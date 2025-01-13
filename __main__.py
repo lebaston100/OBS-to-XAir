@@ -145,7 +145,7 @@ def load_config(config: str) -> dict:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="OBS to Xair Controller")
     parser.add_argument(
-        "--config", default="config.toml", help="Path to the config file"
+        "-c", "--config", default="config.toml", help="Path to the config file"
     )
     parser.add_argument(
         "-d",
