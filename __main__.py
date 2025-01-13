@@ -15,7 +15,7 @@ import argparse
 import logging
 import threading
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Mapping
 
 import obsws_python as obs
 import xair_api
@@ -85,7 +85,7 @@ class Observer:
         if not (map_ := self._mapping.get(scene)):
             return
 
-        actions: dict[Callable] = {
+        actions: Mapping[str, Callable] = {
             "mute": self._mute_handler,
             "unmute": self._unmute_handler,
             "toggle": self._toggle_handler,
@@ -131,6 +131,7 @@ def load_config(config: str) -> dict:
         ):
             if filepath.is_file():
                 return filepath
+        return None
 
     if not (filepath := get_filepath()):
         raise FileNotFoundError(f"Config file {config} not found")
